@@ -1,0 +1,82 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Bai Jamjuree', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.7pt;
+  outline: none;
+  border: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  padding: 15px;
+  background-color: rgb(97, 161, 113);
+}
+
+.view {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+}
+
+.btn-menu {
+  width: 65vw;
+}
+
+button {
+  padding: 1.2em 1.5em;
+  background-color: white;
+  margin: .3em;
+  border-radius: .3em;
+  box-shadow: 2px 2px 5px rgb(55, 93, 65);
+}
+
+.button-menu-h {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#btn-admin {
+  background-color: rgb(78, 128, 90);
+  color: white;
+  margin-top: 20px;
+  opacity: .7;
+}
+
+.back-btn{
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  background-color: transparent;
+  color: white;
+  opacity: .5;
+  padding: .6em .7em;
+}
+
+input, select {
+  text-transform: none;
+  padding: .5em;
+  margin: .3em;
+  border-radius: .3em;
+  width: 18em;
+}
+
+input[type=date] {
+  padding: 1em;
+  width: 50vw;
+  height: 8vh;
+  font-size: 1em;
+}
+
+.hidden {
+  display: none;
+}
