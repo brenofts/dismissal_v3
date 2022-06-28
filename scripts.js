@@ -102,69 +102,94 @@ db.ref('students/data').get()
       student[4] = __buses_list
     }
   })
+  document.getElementById('loading').classList.add('hidden')
+  document.getElementById('main').classList.remove('hidden')
+  edit_cars()
 })
 .catch(e => alert('Something went wrong (' + e.message + ')'))
 
 // end load students, classes
 
+
+// cars and buses
 function edit_cars() {
-  var mapped = students.map(student => {
+  var new_cars = students.map(student => {
     var __cars_list = student[3]
     __cars_list.forEach(car => {
       if (car != '') {
-        if (!cars.some(i => i.id === car)) {
-          var __car = {students : []}
-          __car.id = car
+        if (!cars.some(i => i._id === car)) {
+          var __car = {}
+          __car._id = car
+          __car.students = []
           cars.push(__car)
         }
       }
     })
   })
+  add_car_students()
 }
 
 function add_car_students() {
-  var mapped = students.map(student => {
+  var new_cars = students.map(student => {
     var __student = {l_name : student[0], 
                      f_name : student[1],
                      grade : student[2]}
     var __cars_list = student[3]
     __cars_list.forEach(car => {
       if (car != '') {
-        var find_car = i => i.id == car
+        var find_car = i => i._id == car
         var car_found = cars.find(find_car)
         car_found.students.push(__student)
       }
     })
   })
+  edit_buses()
 }
 
 function edit_buses() {
-  var mapped = students.map(student => {
+  var new_cars = students.map(student => {
     var __buses_list = student[4]
     __buses_list.forEach(bus => {
       if (bus != '') {
-        if (!buses.some(i => i.id === bus)) {
-          var __bus = {students : []}
-          __bus.id = bus
+        if (!buses.some(i => i._id === bus)) {
+          var __bus = {}
+          __bus._id = bus
+          __bus.students = []
           buses.push(__bus)
         }
       }
     })
   })
+  add_bus_students()
 }
 
 function add_bus_students() {
-  var mapped = students.map(student => {
+  var new_cars = students.map(student => {
     var __student = {l_name : student[0], 
                      f_name : student[1],
                      grade : student[2]}
     var __buses_list = student[4]
     __buses_list.forEach(bus => {
       if (bus != '') {
-        var find_bus = i => i.id == bus
+        var find_bus = i => i._id == bus
         var bus_found = buses.find(find_bus)
         bus_found.students.push(__student)
       }
     })
   })
 }
+// end cars and buses
+
+// carline
+
+function select_date() {
+  document.getElementById('date-selected').innerText = document.getElementById('carline-date').value
+  document.getElementById('select-date').classList.add('hidden')
+  document.getElementById('div-carline').classList.remove('hidden')
+}
+function change_date() {
+  document.getElementById('select-date').classList.remove('hidden')
+  document.getElementById('div-carline').classList.add('hidden')
+}
+
+// end carline

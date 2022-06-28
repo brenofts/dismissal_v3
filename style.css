@@ -52,16 +52,6 @@ button {
   opacity: .7;
 }
 
-.back-btn{
-  position: absolute;
-  left: 5px;
-  top: 2px;
-  background-color: transparent;
-  color: white;
-  opacity: .5;
-  padding: .6em .7em;
-}
-
 input, select {
   text-transform: none;
   padding: .5em;
@@ -73,7 +63,7 @@ input, select {
 input[type=date] {
   padding: 1em;
   width: 50vw;
-  height: 8vh;
+  height: 45px;
   font-size: 1em;
 }
 

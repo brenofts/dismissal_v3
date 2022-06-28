@@ -8,34 +8,33 @@
   <title>Dismissal</title>
 </head>
 <body>
-  <div class="view" id="Dismissal">
-    <div class="button-menu-h">
-      <button class="btn-menu" onclick="changeView('Carline', 'Carline')">Carline</button>
-      <button class="btn-menu" onclick="changeView('Carline', 'Front Office')">Front Office</button>
-      <button class="btn-menu" onclick="changeView('Classes')">Classes</button>
-      <button class="btn-menu" onclick="changeView('Search')">Search</button>
-      <button class="btn-menu" onclick="changeView('Admin')" id="btn-admin">admin</button>
+  <div id="loading">loading...</div>
+  <div class="hidden" id="main">
+    <div class="view" id="Dismissal">
+      <div class="button-menu-h">
+        <button class="btn-menu" onclick="changeView('Carline', 'Carline')">Carline</button>
+        <button class="btn-menu" onclick="changeView('Carline', 'Front Office')">Front Office</button>
+        <button class="btn-menu" onclick="changeView('Classes')">Classes</button>
+        <button class="btn-menu" onclick="changeView('Search')">Search</button>
+        <button class="btn-menu" onclick="changeView('Admin')" id="btn-admin">admin</button>
+      </div>
     </div>
-  </div>
-  <div class="view hidden" id="Carline">
-    <div class="" id="select-date">
-      <input type="date" name="carline-date" id="carline-date" />
+    <div class="view hidden" id="Carline">
+      <div class="" id="select-date">
+        <input type="date" name="carline-date" id="carline-date" />
+        <button onclick="select_date()">OK</button>
+      </div>
+      <div class="div-carline hidden" id="div-carline">
+        <span id="date-selected"></span>
+        <button onclick="history.back()">home</button>
+        <button onclick="change_date()">select date</button>
+      </div>
     </div>
-
-    <div class="button-menu">
-      <button onclick="history.back()">Cancel</button>
-      <button onclick="select_date()">OK</button>
+    <div class="view hidden" id="Classes">classes
     </div>
-  </div>
-  <div class="view hidden" id="Classes">classes
-      <button class="back-btn" onclick="history.back()">< back</button>
-  </div>
-  <div class="view hidden" id="Search">search
-      <button class="back-btn" onclick="history.back()">< back</button>
-  </div>
-  <div class="view hidden" id="Admin">admin
-    <div class="button-menu">
-      <button onclick="history.back()">home</button>
+    <div class="view hidden" id="Search">search
+    </div>
+    <div class="view hidden" id="Admin">admin
     </div>
   </div>
 
