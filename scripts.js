@@ -47,6 +47,7 @@ function changeView(view, local = null) {
 var students = []
 var classes_list = ['ELEMENTARY', 'MIDDLE & HIGH SCHOOL','MIDDLE SCHOOL', 'HIGH SCHOOL']
 var cars = []
+var buses = []
 
 // end globals
 
@@ -78,46 +79,6 @@ db.ref('students/data').get()
     if (!classes_list.includes(__class))
     classes_list.push(__class)
   })
-
-  // cars
-  // students.forEach(student => {
-  //   var __student_cars = student[3]
-  //   var __car = { students : [] }
-  //   if (__student_cars != ''){
-  //     var __car_student = {}
-  //     __car_student.name = student[1] + ' ' + student[0]
-  //     __car_student.grade = student[2]
-  //     // if student has 2 or more cars
-  //     if (__student_cars.includes(',')) {
-  //       var __cars_list = __student_cars.split(', ')
-  //       __cars_list.forEach(i => {
-  //         var find_car = car => car.number === i
-  //         var car_found = cars.find(find_car)
-  //         if (car_found == undefined) {
-  //           __car.students.push(__car_student)
-  //           __car.number = i
-  //           cars.push(__car)
-  //           console.log(__cars_list,__car)
-  //         } else {
-  //           car_found.students.push(__car_student)
-  //           console.log(__cars_list,__car, 'else')
-  //         }
-  //       })
-  //     } else {
-  //       // if student has 1 car
-  //       var find_car = car => car.number == student[3]
-  //       var car_found = cars.find(find_car)
-  //       if (car_found == undefined) {
-  //         __car.students.push(__car_student)
-  //         __car.number = student[3]
-  //         cars.push(__car)
-  //       } else {
-  //         car_found.students.push(__car_student)
-  //       }
-  //     }
-  //   }
-  // })
-
   
   students.forEach(student => {
     if (student[3].includes(',')) {
@@ -141,8 +102,69 @@ db.ref('students/data').get()
       student[4] = __buses_list
     }
   })
-
 })
 .catch(e => alert('Something went wrong (' + e.message + ')'))
 
 // end load students, classes
+
+function edit_cars() {
+  var mapped = students.map(student => {
+    var __cars_list = student[3]
+    __cars_list.forEach(car => {
+      if (car != '') {
+        if (!cars.some(i => i.id === car)) {
+          var __car = {students : []}
+          __car.id = car
+          cars.push(__car)
+        }
+      }
+    })
+  })
+}
+
+function add_car_students() {
+  var mapped = students.map(student => {
+    var __student = {l_name : student[0], 
+                     f_name : student[1],
+                     grade : student[2]}
+    var __cars_list = student[3]
+    __cars_list.forEach(car => {
+      if (car != '') {
+        var find_car = i => i.id == car
+        var car_found = cars.find(find_car)
+        car_found.students.push(__student)
+      }
+    })
+  })
+}
+
+function edit_buses() {
+  var mapped = students.map(student => {
+    var __buses_list = student[4]
+    __buses_list.forEach(bus => {
+      if (bus != '') {
+        if (!buses.some(i => i.id === bus)) {
+          var __bus = {students : []}
+          __bus.id = bus
+          buses.push(__bus)
+        }
+      }
+    })
+  })
+}
+
+function add_bus_students() {
+  var mapped = students.map(student => {
+    var __student = {l_name : student[0], 
+                     f_name : student[1],
+                     grade : student[2]}
+    var __buses_list = student[4]
+    __buses_list.forEach(bus => {
+      if (bus != '') {
+        var find_bus = i => i.id == bus
+        var bus_found = buses.find(find_bus)
+        bus_found.students.push(__student)
+      }
+    })
+  })
+}
